@@ -1,7 +1,11 @@
 # file-sharer
 
+## Introduction
+
 I want to write an application in Rust or Golang that is used for fast, easy and secure p2p file-sharing.
 A use-case would be for example if you want to send that 2GB folder of holiday-pictures to a friend.
+
+## First test and problems
 
 For a first test I used nginx with a self-signed certificate and forced usage of TLS 1.2/1.3 with strong crypto primitives, but there are a few points I want to mention
 1) [-] It is annoying, that the connection is displayed as not secure because of the self-signed certificate
@@ -12,14 +16,20 @@ For a first test I used nginx with a self-signed certificate and forced usage of
 6) [-] Filenames are embedded in the URL which might be unwanted
 7) [-] I'd like to use Curve448 which is not supported by most webbrowsers
 
+## Possible solutions
+
 With a standalone application I think some problems could be solved rather easily
-- 4) The app could handle downloading each file in a directory sequentially
-- 5) NAT Hole-punching could remove the need for port-forwarding
-- 6) Filenames could be put in a (encrypted) json-response
-- 7) There are implementations for Curve448 operations in Rust/Golang
+- (4) The app could handle downloading each file in a directory sequentially
+- (5) NAT Hole-punching could remove the need for port-forwarding
+- (6) Filenames could be put in a (encrypted) json-response
+- (7) There are implementations for Curve448 operations in Rust/Golang
+
+## Server configuration
 
 - Server configuration
   - A list of folders/files to share
+
+## Example interaction
 
 How I imagine a interaction where B wants to download files from A
 1) A starts the server 
